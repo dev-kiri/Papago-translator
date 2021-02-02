@@ -30,8 +30,8 @@ class Papago(
 
     private fun getUUID(): String = UUID.randomUUID().toString()
 
-    fun translate(honorific: Boolean = false): HashMap<String, String?> {
-        val map = HashMap<String, String?>()
+    fun translate(honorific: Boolean = false): HashMap<String, String> {
+        val map = HashMap<String, String>()
         val time = Date().time
         val uuid = getUUID()
         val hashedString = encrypt("$uuid\n$URL_TRANSLATE\n$time")
@@ -101,8 +101,8 @@ class Papago(
                     put("target", target)
                     put("text", text)
                     put("translatedText", translatedText)
-                    put("sound", sound)
-                    put("srcSound", srcSound)
+                    put("sound", sound ?: "")
+                    put("srcSound", srcSound ?: "")
                 }
                 return map
             }
