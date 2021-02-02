@@ -40,7 +40,7 @@ class Papago(
             val body = Jsoup.connect(URL_DETECT).run {
                 header("Authorization", "PPG $uuid:${encrypt("$uuid\n$URL_DETECT\n$time")}")
                 header("Timestamp", "$time")
-                data("query", "text")
+                data("query", text)
                 ignoreContentType(true)
                 post()
             }.text()
